@@ -4,13 +4,11 @@
   "description": "A modern, responsive portfolio showcasing automation services, data analysis, and web development capabilities.",
   "main": "tailwind.config.js",
   "scripts": {
-    "build-css": "npx @tailwindcss/cli -i ./src/input.css -o ./css/tailwind.css --watch",
     "build": "npx @tailwindcss/cli -i ./src/input.css -o ./css/tailwind.css --minify",
     "copy-files": "cp -r css public/ && cp -r js public/ && cp -r Img public/ && cp portafolio.html public/index.html",
     "build-prod": "npm run build && npm run copy-files",
     "dev": "npx @tailwindcss/cli -i ./src/input.css -o ./css/tailwind.css --watch",
-    "preview": "python -m http.server 8080",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "preview": "python -m http.server 8080"
   },
   "repository": {
     "type": "git",
@@ -26,7 +24,6 @@
   "homepage": "https://github.com/Soyt0ny/Portfolio#readme",
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.11",
-    "@tailwindcss/vite": "^4.0.0",
     "tailwindcss": "^4.0.0"
   }
 }
