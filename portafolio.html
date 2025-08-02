@@ -14,17 +14,36 @@
     <header id="header" class="sticky top-0 flex w-full bg-transparent transition-all duration-300 justify-between items-center px-4 sm:px-6 py-4 border-b-2 border-transparent shadow-lg z-50 neon-border">
         <h1 class="text-xl sm:text-2xl font-extrabold neon-glow">SOYT0NY</h1>
         <div class="flex items-center gap-4 sm:gap-6">
-            <nav>
-                <ul class="flex gap-3 sm:gap-6 font-bold text-xs sm:text-sm tracking-wider">
+            <!-- Navigation - Desktop -->
+            <nav class="hidden lg:block">
+                <ul class="flex gap-6 font-bold text-sm tracking-wider">
                     <li><a href="#inicio" class="text-white hover:text-pink-400 transition-colors duration-300 neon-glow">ABOUT</a></li>
                     <li><a href="#proyectos" class="text-white hover:text-pink-400 transition-colors duration-300 neon-glow">SERVICES</a></li>
                     <li><a href="#contacto" class="text-white hover:text-pink-400 transition-colors duration-300 neon-glow">CONTACT</a></li>
                 </ul>
             </nav>
+            
+            <!-- Language Toggle -->
             <button id="languageToggle" class="border border-purple-400 hover:bg-purple-400 hover:text-black text-purple-400 px-2 sm:px-3 py-1 sm:py-2 font-bold text-xs sm:text-sm tracking-wider transition-all duration-300 neon-border">
                 EN | ES
             </button>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobileMenuToggle" class="lg:hidden flex flex-col justify-center items-center w-8 h-8 cursor-pointer group">
+                <span class="block w-6 h-0.5 bg-purple-400 transition-all duration-300 group-hover:bg-pink-400" id="burger-line-1"></span>
+                <span class="block w-6 h-0.5 bg-purple-400 mt-1.5 transition-all duration-300 group-hover:bg-pink-400" id="burger-line-2"></span>
+                <span class="block w-6 h-0.5 bg-purple-400 mt-1.5 transition-all duration-300 group-hover:bg-pink-400" id="burger-line-3"></span>
+            </button>
         </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <nav id="mobileNav" class="lg:hidden absolute top-full left-0 w-full bg-black/95 backdrop-blur-md border-b-2 border-purple-400 transform -translate-y-full opacity-0 invisible transition-all duration-300">
+            <ul class="flex flex-col py-6 px-6 space-y-4">
+                <li><a href="#inicio" class="block text-white hover:text-pink-400 transition-colors duration-300 neon-glow font-bold text-lg tracking-wider py-2">ABOUT</a></li>
+                <li><a href="#proyectos" class="block text-white hover:text-pink-400 transition-colors duration-300 neon-glow font-bold text-lg tracking-wider py-2">SERVICES</a></li>
+                <li><a href="#contacto" class="block text-white hover:text-pink-400 transition-colors duration-300 neon-glow font-bold text-lg tracking-wider py-2">CONTACT</a></li>
+            </ul>
+        </nav>
     </header>
     <main class="flex-1">
         <section id="inicio" class="relative flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-purple-900 via-pink-900 to-blue-900 text-white grid-bg overflow-hidden px-4 sm:px-6">

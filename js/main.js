@@ -8,8 +8,64 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// Language toggle functionality
+// Mobile menu functionality
 document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    const burgerLine1 = document.getElementById('burger-line-1');
+    const burgerLine2 = document.getElementById('burger-line-2');
+    const burgerLine3 = document.getElementById('burger-line-3');
+    let isMobileMenuOpen = false;
+    
+    // Mobile menu toggle
+    mobileMenuToggle.addEventListener('click', function() {
+        isMobileMenuOpen = !isMobileMenuOpen;
+        
+        if (isMobileMenuOpen) {
+            // Open menu
+            mobileNav.classList.remove('-translate-y-full', 'opacity-0', 'invisible');
+            mobileNav.classList.add('translate-y-0', 'opacity-100', 'visible');
+            
+            // Animate burger to X
+            burgerLine1.style.transform = 'rotate(45deg) translate(6px, 6px)';
+            burgerLine2.style.opacity = '0';
+            burgerLine3.style.transform = 'rotate(-45deg) translate(6px, -6px)';
+        } else {
+            // Close menu
+            mobileNav.classList.add('-translate-y-full', 'opacity-0', 'invisible');
+            mobileNav.classList.remove('translate-y-0', 'opacity-100', 'visible');
+            
+            // Animate X back to burger
+            burgerLine1.style.transform = 'rotate(0) translate(0, 0)';
+            burgerLine2.style.opacity = '1';
+            burgerLine3.style.transform = 'rotate(0) translate(0, 0)';
+        }
+    });
+    
+    // Close mobile menu when clicking on a link
+    const mobileNavLinks = mobileNav.querySelectorAll('a');
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            if (isMobileMenuOpen) {
+                mobileMenuToggle.click(); // Trigger close
+            }
+        });
+    });
+    
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+        if (isMobileMenuOpen && !mobileMenuToggle.contains(event.target) && !mobileNav.contains(event.target)) {
+            mobileMenuToggle.click(); // Trigger close
+        }
+    });
+    
+    // Close mobile menu on resize to desktop
+    window.addEventListener('resize', function() {
+        if (window.innerWidth >= 1024 && isMobileMenuOpen) {
+            mobileMenuToggle.click(); // Trigger close
+        }
+    });
+
     const languageToggle = document.getElementById('languageToggle');
     let isSpanish = false;
     
@@ -86,10 +142,15 @@ document.addEventListener('DOMContentLoaded', function() {
         isSpanish = !isSpanish;
         const lang = isSpanish ? 'es' : 'en';
         
-        // Update navigation
-        document.querySelector('nav a[href="#inicio"]').textContent = content[lang].about;
-        document.querySelector('nav a[href="#proyectos"]').textContent = content[lang].services;
-        document.querySelector('nav a[href="#contacto"]').textContent = content[lang].contact;
+        // Update desktop navigation
+        document.querySelector('nav.hidden a[href="#inicio"]').textContent = content[lang].about;
+        document.querySelector('nav.hidden a[href="#proyectos"]').textContent = content[lang].services;
+        document.querySelector('nav.hidden a[href="#contacto"]').textContent = content[lang].contact;
+        
+        // Update mobile navigation
+        document.querySelector('#mobileNav a[href="#inicio"]').textContent = content[lang].about;
+        document.querySelector('#mobileNav a[href="#proyectos"]').textContent = content[lang].services;
+        document.querySelector('#mobileNav a[href="#contacto"]').textContent = content[lang].contact;
         
         // Update services section
         document.querySelector('#proyectos h2').textContent = content[lang].myServices;
