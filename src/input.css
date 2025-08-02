@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+/* Configuración de tema personalizado para Tailwind v4 */
+@theme {
+  --color-cyber-purple: #8b5cf6;
+  --color-cyber-pink: #ec4899;
+  --color-cyber-blue: #3b82f6;
+  --color-cyber-yellow: #f59e0b;
+  --color-cyber-green: #10b981;
+  
+  --font-family-mono: 'JetBrains Mono', monospace;
+  
+  --animate-floating: floating 6s ease-in-out infinite;
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Importar fuente */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap');
+
+/* Estilos personalizados */
+@layer utilities {
+  .neon-glow {
+    text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor;
+  }
+  
+  .neon-border {
+    box-shadow: 0 0 5px currentColor, inset 0 0 5px currentColor;
+  }
+  
+  .grid-bg {
+    background-image: 
+      linear-gradient(rgba(139, 92, 246, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(139, 92, 246, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+  
+  .floating {
+    animation: floating 6s ease-in-out infinite;
+  }
+  
+  @keyframes floating {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+  }
+  
+  .cyber-input {
+    background: linear-gradient(45deg, rgba(139, 92, 246, 0.1), rgba(236, 72, 153, 0.1));
+    border: 2px solid rgb(139, 92, 246);
+    color: white;
+    transition: border-color 0.3s ease;
+  }
+  
+  .cyber-input:focus {
+    border-color: rgb(236, 72, 153);
+    outline: none;
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+  }
+}
