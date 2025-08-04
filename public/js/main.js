@@ -1,7 +1,7 @@
 // Header blur effect on scroll
 window.addEventListener('scroll', function() {
     const header = document.querySelector('header');
-    if (window.scrollY > 1) {
+    if (window.scrollY > 0.5) {
         header.classList.add('backdrop-blur-md', 'bg-black/30');
     } else {
         header.classList.remove('backdrop-blur-md', 'bg-black/30');
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
     
-    // Function to update service options
+    // Function to update FORM service options
     function updateServiceOptions(lang) {
         const select = document.querySelector('select[name="service_type"]');
         const options = {
